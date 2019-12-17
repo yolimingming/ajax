@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery.js"></script>
+  <script>
+    // 1 无参数，不接收响应内容
+    // $.post('http://192.168.141.45:3005/common/post');
+
+    // 2 无参数，接收响应内容
+    /* $.post('http://192.168.141.45:3005/common/post', function (res) {
+      console.log('成功接收响应内容');
+      console.log(res);
+    });
+   */
+
+    // 3 传入请求参数，接收响应内容
+    $.post(
+      'http://192.168.141.45:3005/common/post',
+      { name: 'jack', age: 18 },
+      function (res) {
+        console.log('成功接收响应内容');
+        console.log(res);
+      });
+
+
+  </script>
+</body>
+
+</html>
