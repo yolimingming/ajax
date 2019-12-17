@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 同步代码
+    /*  console.log('这是第1个代码');
+     console.log('这是第2个代码');
+     console.log('这是第3个代码');
+     console.log('这是第4个代码');
+     console.log('这是第5个代码'); */
+
+
+    // 异步代码：
+    /* setTimeout(function () {
+      console.log('这是定时器内的代码');
+    }, 0);
+    console.log('这是第1个代码');
+    console.log('这是第2个代码');
+    console.log('这是第3个代码');
+    console.log('这是第4个代码');
+    console.log('这是第5个代码'); */
+
+
+    /* for (var i = 0; i < 10; i++) {
+      console.log(i); // 0-9
+    }
+    // console.log(i); // 10 */
+
+    /* for (var i = 0; i < 10; i++) {
+      setTimeout(function () {
+        console.log(i);
+      }, 1000);
+    } */
+
+    for (var i = 0; i < 10; i++) {
+      setTimeout(function () {
+        console.log(i);
+      }, 0);
+    }
+
+  </script>
+</body>
+
+</html>
