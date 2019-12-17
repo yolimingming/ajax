@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery.js"></script>
+  <script>
+    // 1 使用$.ajax()发送GET请求
+    /* $.ajax({
+      // type: 'GET', // 默认为GET，一般发送GET请求时，都不设置type
+      url: 'http://192.168.141.45:3005/common/get',
+      data: {
+        name: 'jack',
+        age: 18,
+        gender: '男'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    }); */
+
+
+
+    // 2 使用$.ajax()发送POST请求
+    $.ajax({
+      type: 'POST',
+      url: 'http://192.168.141.45:3005/common/post',
+      data: {
+        width: 200,
+        height: 600,
+        bgc: 'red'
+      },
+      success: function (res) {
+        console.log(res);
+      }
+    });
+
+
+
+  </script>
+</body>
+
+</html>
