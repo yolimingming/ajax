@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 另一个小示例：
+    var str = '张三的邮箱zs@qq.com 李四的邮箱ls@qqq.com ';
+    var reg = /(\w+)@(\w+\.\w+)/g;
+
+    // match是字符串方法
+    console.log(str.match(reg));
+
+    // match和exec的小区别：
+    //   - 用法区别
+    //   - 功能区别:
+    //      - match可以一次提取所有数据，但是没法分组
+    //      - exec每次取一个，可以分组
+
+
+  </script>
+</body>
+
+</html>
