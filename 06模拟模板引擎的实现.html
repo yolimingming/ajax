@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script type="text/template" id="test">
+    <div>你好我的名字叫做：{{name}} 年龄是 {{age}}性别为{{gender}}</div>
+  </script>
+  <script>
+    var data = {
+      name: 'jack',
+      age: 18,
+      gender: '男'
+    };
+
+    var htmlStr = myTemplate('test', data);
+    document.getElementById('box').innerHTML = htmlStr;
+
+
+    function myTemplate(id, datas) {
+      // 1 根据模板id获取到内部的所有内容，使用innerHTML属性
+      var str = document.getElementById(id).innerHTML;
+
+      // 2 找到str中类似{{属性名}}的部分,替换为对应数据
+      //   就是将 {{属性名}}的部分 替换为 datas中的对应属性值
+      var result;
+
+      // exec的特点是每次调用后，结果都会累计
+      //   - str.replace的赋值，会将str更新，累计就出现了问题
+      //   - 在while条件中设置正则字面量，就可以避免出现累计有问题的情况
+
+      while (result = /{{([a-z]+)}}/g.exec(str)) {
+        // 3 进行替换操作
+        //  result[0]是要替换的部分
+        //  result[1]是对应的属性名
+        //  datas[result[1]]是要替换为的属性值
+        str = str.replace(result[0], datas[result[1]]);
+      }
+
+      return str;
+    }
+
+
+  </script>
+</body>
+
+</html>
