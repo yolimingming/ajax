@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 例如，将需要生成的结构放入到box中 -->
+  <div id="box"></div>
+
+  <!-- 1 引入模板引擎的js文件 -->
+  <script src="template-web.js"></script>
+  <!-- 3 定义模板 -->
+  <!-- 模板使用script标签，将type设置为非js格式即可，推荐书写为text/template -->
+  <script type="text/template" id="template">
+    {{$data}}
+    {{$data.name}}
+    {{$data.age}}
+    {{name}}
+    {{age}}
+    <div>
+      <p>{{name}}</p>
+    </div>
+    <div>
+      <p>{{age}}</p>
+    </div>
+    <a href="javascript:;">{{html}}</a>
+    <br>
+    <a href="javascript:;">{{@html}}</a>
+
+
+    {{if age>=18}}
+    <p>此人成年了</p>
+    {{else}}
+    <p>此人未成年</p>
+    {{/if}}
+
+    {{if age===17}}
+    <p>此人17岁</p>
+    {{/if}}
+
+    {{if age===21}}
+    <p>此人21岁</p>
+    {{else if age===20}}
+    <p>此人20岁</p>
+    {{else}}
+    <p>此人不知道多少岁</p>
+    {{/if}}
+    
+    {{each aiHao}}
+      <div>这是div</div>  {{$index}}   {{$value}}
+    {{/each}}
+
+    {{each aiHao v i}}
+      <div>这是div</div> {{v}} {{i}} 
+    {{/each}}
+
+    {{each obj}}
+    <p>这是p标签</p>  {{$index}}   {{$value}}
+    {{/each}}
+
+    {{each obj value key}}
+    <p>这是p标签</p>  {{key}}   {{value}}
+    {{/each}}
+
+    {{time}}
+  </script>
+
+  <!-- 2 在js中准备要使用的数据 -->
+  <script>
+    var data123 = {
+      name: 'jack',
+      age: 17,
+      html: '<span>这是要放入到a标签中的内容</span>',
+      aiHao: ['吃', '喝', '玩'],
+      obj: {
+        title: '这是标题',
+        content: '这是内容',
+        id: 3
+      },
+      time: 1575877610719
+    };
+
+    // 4 在js中引入模板的结构内容
+    //    - template()是art-template提供的一个全局函数
+    //    - 参数1：模板的id名   参数2：要传入的数据
+    //    - 返回值：将模板和数据结合后得到的结构字符串(相当于以前字符串拼接的结果)
+    var htmlStr = template('template', data123);
+    // console.log(htmlStr);
+
+    document.getElementById('box').innerHTML = htmlStr;
+
+
+  </script>
+</body>
+
+</html>
