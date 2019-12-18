@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 例如，将需要生成的结构放入到box中 -->
+  <div id="box"></div>
+
+  <!-- 1 引入模板引擎的js文件 -->
+  <script src="template-web.js"></script>
+  <!-- 3 定义模板 -->
+  <script type="text/template" id="template">
+    {{time|dateFormat}}
+  </script>
+
+  <!-- 2 在js中准备要使用的数据 -->
+  <script>
+    var data123 = {
+      time: 1575877610719
+    };
+    // 使用模板功能前，定义好过滤器的功能
+    // template.defaults.imports.过滤器名称 = 函数
+    template.defaults.imports.dateFormat = function (time) {
+      // 内部书写日期的格式化功能即可
+      var date = new Date(time);
+      var result = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+      // 通过返回值，将处理结果展示在模板中
+      return result;
+    };
+    // 4 在js中引入模板的结构内容
+    var htmlStr = template('template', data123);
+    document.getElementById('box').innerHTML = htmlStr;
+
+
+  </script>
+</body>
+
+</html>
