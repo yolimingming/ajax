@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <form>
+    <input type="text" name="username">
+    <input type="password" name="psw">
+    <button>提交</button>
+  </form>
+
+  <script src="./jquery.js"></script>
+  <script>
+    // 1 设置事件检测提交行为，并阻止默认提交
+    $('form').submit(function (e) {
+      e.preventDefault();
+
+      // 2 调用方法获取数据
+      var result = $('form').serialize();
+      console.log(result);
+
+      // 3 通过serialize方法获取的结果可以直接通过jquery的ajax进行发送
+      //   - 下面的地址是随便书写的，访问会出错，我们重点看的是参数是否发送成功
+      $.get('http://www.baidu.com', result, function (res) {
+        console.log(res);
+      });
+
+      $.get('http://abc/api/abc', {
+        username: 'jack',
+        password: 'rose'
+      }, function (res) {
+        console.log(res);
+
+      });
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>
